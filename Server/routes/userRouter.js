@@ -27,7 +27,7 @@ router.post('/verify-account', isAuthentication, verifyEmail);
 
 //check if user is authenticated
 // @api :- /api/user/isAuth
-router.post('/is-auth', isAuthentication, userIsAuthenticated);
+router.get('/is-auth', isAuthentication, userIsAuthenticated);
 
 //Send OTP to Reset Password
 // @api :- /api/user/send-reset-otp
