@@ -18,7 +18,7 @@ const isAuthentication = async (req, res, next) => {
             } else {
                 return res.json({
                     message: "Not authorised, Login again",
-                    success: true
+                    success: false
                 })
             }
             next();
