@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import userModel from '../models/UserModel.js';
 import createTransporter from '../config/nodemailer.js';
+import { EMAIL_VERIFY_TEMPLATE, PASSWORD_RESET_TEMPLATE } from '../config/emailTemplates.js';
 
 //user register
 export const register = async (req, res) => {
@@ -178,7 +179,8 @@ export const sendVerifyOtp = async (req, res) => {
             from: process.env.SENDER_EMAIL,
             to: user.email,
             subject: 'Account verification OTP',
-            text: `Your OTP is ${otp}. Verify your account with this OTP.`
+            // text: `Your OTP is ${otp}. Verify your account with this OTP.`,
+            html: EMAIL_VERIFY_TEMPLATE.replace("{{otp}}", otp).replace("{{email}}", user.email)
         }
         const transporter = createTransporter();
         await transporter.sendMail(mailOption);
@@ -300,7 +302,8 @@ export const sendRestOtp = async (req, res) => {
                 from: process.env.SENDER_EMAIL,
                 to: user.email,
                 subject: 'Password reset OTP',
-                text: `Your OTP for reseting you password is ${otp}. Reset your account password with this OTP.`
+                // text: `Your OTP for reseting you password is ${otp}. Reset your account password with this OTP.`,
+                html: PASSWORD_RESET_TEMPLATE.replace("{{otp}}", otp).replace("{{email}}", user.email)
             };
             const transporter = createTransporter();
             await transporter.sendMail(mailOption);
@@ -313,7 +316,7 @@ export const sendRestOtp = async (req, res) => {
         } catch (error) {
             res.json({
                 message: error.message,
-                sccuess: false
+                success: false
             })
         }
     }
@@ -369,7 +372,7 @@ export const resetPassword = async (req, res) => {
         } catch (error) {
             res.json({
                 message: error.message,
-                sccuess: false
+                success: false
             })
         }
     }
