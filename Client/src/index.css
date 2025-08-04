@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital@1&family=Martel+Sans&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Poppins:wght@500&display=swap');
+
+* {
+  font-family: "Outfit", sans-serif;
+}
+
+@import "tailwindcss";
