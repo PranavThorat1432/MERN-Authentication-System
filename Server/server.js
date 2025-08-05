@@ -10,7 +10,7 @@ config(); // Load environment variables FIRST
 
 const app = express();
 
-const allowedOrigins = ['http://localhost:5173']
+const allowedOrigins = ['http://localhost:5173', 'https://mern-authentication-system-kappa.vercel.app/']
 
 app.use(express.json());
 app.use(cookieParser());
