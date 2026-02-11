@@ -10,7 +10,7 @@ config(); // Load environment variables FIRST
 
 const app = express();
 
-const allowedOrigins = ['https://mern-authentication-system-kappa.vercel.app']
+const allowedOrigins = process.env.FRONTEND_URL || 'http://localhost:5173'
 
 app.use(express.json());
 app.use(cookieParser());
@@ -30,4 +30,4 @@ app.use('/api/user-details', userDetails);
 connectDB();
 
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => { console.log(`Server is running on PORT: ${PORT}`)}); 
+app.listen(PORT, () => { console.log(`Server is running on PORT: 'http://localhost:${PORT}'`)});   
