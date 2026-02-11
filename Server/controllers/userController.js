@@ -35,16 +35,11 @@ export const register = async (req, res) => {
 
             res.cookie('token', token, {
                 httpOnly: true,
-                secure: true,
-                sameSite: 'none',
-                maxAge: 7 * 24 * 60 * 60 * 1000
+                maxAge: 7 * 24 * 60 * 60 * 1000,
+                sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+                secure: process.env.NODE_ENV === 'production'
             });
 
-            //sending welcome email
-            // console.log('=== EMAIL DEBUG ===');
-            // console.log('SENDER_EMAIL:', process.env.SENDER_EMAIL);
-            // console.log('TO_EMAIL:', email);
-            // console.log('==================');
 
             const mailOptions = {
                 from: process.env.SENDER_EMAIL,
@@ -56,12 +51,9 @@ export const register = async (req, res) => {
             try {
                 const transporter = createTransporter();
                 await transporter.sendMail(mailOptions);
-                console.log('✅ Email sent successfully!');
+                
             } catch (emailError) {
-                console.error('❌ Email sending failed:', emailError.message);
                 console.error('Full email error:', emailError);
-                // Continue with registration even if email fails
-                console.log('⚠️ Continuing with registration despite email failure');
             }
 
             return res.json({
@@ -112,9 +104,9 @@ export const login = async (req, res) => {
 
             res.cookie('token', token, {
                 httpOnly: true,
-                secure: true,
-                sameSite: 'none',
-                maxAge: 7 * 24 * 60 * 60 * 1000
+                maxAge: 7 * 24 * 60 * 60 * 1000,
+                sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+                secure: process.env.NODE_ENV === 'production'
             });
 
             res.json({
@@ -137,8 +129,8 @@ export const logout = async (req, res) => {
     try {
         res.clearCookie('token', {
             httpOnly: true,
-            secure: true,
-            sameSite: 'none',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+            secure: process.env.NODE_ENV === 'production'
         })
 
         return res.json({
