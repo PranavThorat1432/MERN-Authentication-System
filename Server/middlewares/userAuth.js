@@ -1,4 +1,8 @@
 import jwt from 'jsonwebtoken';
+import { config } from 'dotenv';
+
+config(); // Load environment variables FIRST
+
 
 const isAuthentication = async (req, res, next) => {
     const { token } = req.cookies;

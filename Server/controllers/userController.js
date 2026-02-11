@@ -1,8 +1,11 @@
+import { config } from 'dotenv';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import userModel from '../models/UserModel.js';
 import createTransporter from '../config/nodemailer.js';
 import { EMAIL_VERIFY_TEMPLATE, PASSWORD_RESET_TEMPLATE } from '../config/emailTemplates.js';
+
+config(); // Load environment variables FIRST
 
 //user register
 export const register = async (req, res) => {
