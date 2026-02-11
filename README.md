@@ -559,7 +559,7 @@ We welcome contributions! Please follow these steps:
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
 ---
 
@@ -578,9 +578,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 | Platform              | Link                                                          |
 | --------------------- | ------------------------------------------------------------- |
-| 🌐 **Live Demo**      | [View Now](https://mern-authentication-system-kappa.vercel.app/)                        |
+| 🌐 **Live Demo**      | [View Now](https://mern-authentication-system-liart.vercel.app)                        |
 | 🧑‍💻 **GitHub Repo** | [View Code](https://github.com/PranavThorat1432/MERN-Authentication-System) |
-| 💼 **LinkedIn**       | [Connect with Me](https://www.linkedin.com/in/curiouspranavthorat/)       |
+| 💼 **LinkedIn**       | [Connect with Me](https://www.linkedin.com/in/curiouspranavthorat)       |
 | 📩 **Email**          | [pranavthorat95@gmail.com](mailto:pranavthorat95@gmail.com)   |
 
 
